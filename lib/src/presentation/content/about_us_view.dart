@@ -36,7 +36,7 @@ class AboutUsView extends StatelessWidget {
                   height: 32.0,
                 ),
                 Text(
-                  'data' * 10,
+                  'data' * 100,
                   style: bodyMedium.copyWith(color: onBackground),
                 ),
               ],

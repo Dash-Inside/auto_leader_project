@@ -48,21 +48,15 @@ class SelectButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 6.0),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 6),
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(
-            Radius.circular(36.0),
-          ),
-        ),
-        child: Text(
-          text,
-          style: const TextStyle(
-            color: Colors.black,
-          ),
-        ),
+    final Color onBackground = Theme.of(context).colorScheme.onBackground;
+    final TextStyle bodySmall = Theme.of(context).textTheme.bodySmall!;
+    return Container(
+      padding: const EdgeInsets.only(
+        left: 16,
+      ),
+      child: Text(
+        text,
+        style: bodySmall.copyWith(color: onBackground),
       ),
     );
   }

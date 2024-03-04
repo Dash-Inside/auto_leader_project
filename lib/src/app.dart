@@ -47,7 +47,7 @@ class App extends StatelessWidget {
           onBackground: Color.fromRGBO(35, 44, 51, 1),
         ),
       ),
-      home: const AboutUsView(),
+      home: const NavigationBarView(),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:auto_leader_project/src/presentation/widgets/toggle_button_widget.dart';
+import 'package:auto_leader_project/src/presentation/widgets/custom_toggle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -17,10 +17,11 @@ class NavigationBarView extends StatelessWidget {
             height: 48.0,
             width: 48.0,
           ),
-          Text(
+          const Text(
             'АвтоЛидер',
           ),
-          ToggleButtonWidget()
+          Spacer(),
+          const CustomToggleButton(),
         ],
       ),
     );

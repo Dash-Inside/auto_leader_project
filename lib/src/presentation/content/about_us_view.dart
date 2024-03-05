@@ -1,4 +1,7 @@
+import 'package:auto_leader_project/src/presentation/style/color_style.dart';
+import 'package:auto_leader_project/src/presentation/style/text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 /// Section for displaying short info about driving school.
@@ -8,14 +11,11 @@ class AboutUsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color onBackground = Theme.of(context).colorScheme.onBackground;
-    final Color primary = Theme.of(context).colorScheme.primary;
-    final TextStyle bodyMedium = Theme.of(context).textTheme.bodyMedium!;
-    final TextStyle display = Theme.of(context).textTheme.displayMedium!;
-
-    return Scaffold(
-      //убрать нахуй
-      body: Row(
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        minHeight: MediaQuery.of(context).size.height,
+      ),
+      child: Row(
         children: [
           Expanded(
             child: Column(
@@ -24,24 +24,34 @@ class AboutUsView extends StatelessWidget {
               children: [
                 Text(
                   'г. Александров',
-                  style: bodyMedium.copyWith(color: onBackground),
+                  style: getRegularTextStyle(context),
                 ),
                 Text(
                   'Автошкола',
-                  style: display.copyWith(color: primary),
+                  style: getBoldTextStyle(
+                    context,
+                    color: getPrimaryColor(context),
+                  ),
                 ),
                 const SizedBox(
                   height: 32.0,
                 ),
                 Text(
-                  'data' * 100,
-                  style: bodyMedium.copyWith(color: onBackground),
+                  'Квалифицированныe и опытныe инструктора, которые могут предоставить студентам высококачественное обучение вождению',
+                  style: getRegularTextStyle(context),
                 ),
               ],
             ),
           ),
           Expanded(
-            child: SvgPicture.asset('assets/icons/logo.svg'),
+            child: Container(
+              alignment: Alignment.center,
+              width: 350,
+              height: 350,
+              child: SvgPicture.asset(
+                'assets/icons/logo.svg',
+              ),
+            ),
           ),
         ],
       ),

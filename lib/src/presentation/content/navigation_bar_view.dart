@@ -9,14 +9,10 @@ class NavigationBarView extends StatelessWidget {
   const NavigationBarView({super.key});
 
   static const double _svgSize = 48.0;
-
   static const List<String> _viewSections = ['О Нас', 'Стоимость', 'Акции'];
 
   @override
   Widget build(BuildContext context) {
-    final Color onBackground = Theme.of(context).colorScheme.onBackground;
-    final TextStyle title = Theme.of(context).textTheme.titleMedium!;
-
     return Row(
       children: [
         SvgPicture.asset(

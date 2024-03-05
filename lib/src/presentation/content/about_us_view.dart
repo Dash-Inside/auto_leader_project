@@ -1,3 +1,4 @@
+import 'package:auto_leader_project/src/presentation/content/navigation_bar_view.dart';
 import 'package:auto_leader_project/src/presentation/style/color_style.dart';
 import 'package:auto_leader_project/src/presentation/style/text_style.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +12,11 @@ class AboutUsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height - NavigationBarView.expandedAppBarHeight;
     return ConstrainedBox(
       constraints: BoxConstraints(
-        minHeight: MediaQuery.of(context).size.height,
+        minHeight: height,
+        maxHeight: height,
       ),
       child: Row(
         children: [

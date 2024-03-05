@@ -1,5 +1,3 @@
-import 'package:auto_leader_project/src/presentation/content/about_us_view.dart';
-import 'package:auto_leader_project/src/presentation/content/navigation_bar_view.dart';
 import 'package:auto_leader_project/src/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 

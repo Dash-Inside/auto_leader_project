@@ -8,6 +8,9 @@ class NavigationBarView extends StatelessWidget {
   /// Returns an instance of [NavigationBarView].
   const NavigationBarView({super.key});
 
+  /// Height of App Bar for construct pages with correct sizes.
+  static const double expandedAppBarHeight = 88.0;
+
   static const double _svgSize = 48.0;
   static const List<String> _viewSections = ['О Нас', 'Стоимость', 'Акции'];
 

@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.10+1
+  syncfusion_flutter_maps: ^25.1.35
 
 dev_dependencies:
   flutter_test:
@@ -21,8 +22,12 @@ flutter:
   assets:
     - assets/icons/
     - assets/fonts/
+    - assets/map/map.osm
+    - assets/json/map.json
 
   fonts:
   - family: Nunito
     fonts:
       - asset: assets/fonts/Nunito-Regular.ttf
+      - asset: assets/fonts/Nunito-Bold.ttf
+      - asset: assets/fonts/Nunito-Light.ttf

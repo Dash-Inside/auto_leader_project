@@ -24,6 +24,7 @@ class AboutUsView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
+              // mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   'г. Александров',
@@ -42,6 +43,13 @@ class AboutUsView extends StatelessWidget {
                 Text(
                   'Квалифицированныe и опытныe инструктора, которые могут предоставить студентам высококачественное обучение вождению',
                   style: getRegularTextStyle(context),
+                ),
+                const SizedBox(
+                  height: 32.0,
+                ),
+                Text(
+                  '8 (910) 888 88-88',
+                  style: getSubtitleTextStyle(context),
                 ),
               ],
             ),

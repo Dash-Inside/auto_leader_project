@@ -1,7 +1,9 @@
 import 'package:auto_leader_project/src/presentation/content/about_us_view.dart';
 import 'package:auto_leader_project/src/presentation/content/navigation_bar_view.dart';
 import 'package:auto_leader_project/src/presentation/content/promotions_view.dart';
+import 'package:auto_leader_project/src/presentation/content/schedule_view.dart';
 import 'package:auto_leader_project/src/presentation/content/tarrifs_view.dart';
+import 'package:auto_leader_project/src/presentation/content/we_on_map_view.dart';
 import 'package:auto_leader_project/src/presentation/style/color_style.dart';
 import 'package:flutter/material.dart';
 
@@ -46,6 +48,8 @@ class HomePage extends StatelessWidget {
           _SectionSliver(const AboutUsView()),
           _SectionSliver(const TarrifsView()),
           _SectionSliver(const PromotionsView()),
+          _SectionSliver(const ScheduleView()),
+          _SectionSliver(const WeOnMapView()),
         ],
       ),
     );

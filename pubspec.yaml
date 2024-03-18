@@ -22,8 +22,6 @@ flutter:
   assets:
     - assets/icons/
     - assets/fonts/
-    - assets/map/map.osm
-    - assets/json/map.json
 
   fonts:
   - family: Nunito

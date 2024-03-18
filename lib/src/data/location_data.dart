@@ -4,8 +4,8 @@ import 'package:auto_leader_project/src/entities/location.dart';
 const List<Location> dataOfLocations = [
   Location(
     'Офис',
-    56.39771,
-    38.72015,
+    56.39787,
+    38.72005,
   ),
   Location(
     'Автодром',

@@ -39,4 +39,4 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Start release build
-        run: flutter build apk --release
+        run: flutter build web --web-renderer canvaskit

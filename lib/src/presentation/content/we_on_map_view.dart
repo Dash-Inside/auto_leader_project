@@ -9,10 +9,12 @@ class WeOnMapView extends StatelessWidget {
   /// Returns an instance of [WeOnMapView]
   const WeOnMapView({super.key});
 
+  /// Height of SizedBox for the map.
+  static const double sizedBoxHeight = 600.0;
+
   @override
   Widget build(BuildContext context) {
     return Column(
-      // crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Мы на карте',
@@ -59,33 +61,37 @@ class WeOnMapView extends StatelessWidget {
             ),
           ],
         ),
-        SfMaps(
-          layers: [
-            MapTileLayer(
-              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-              initialFocalLatLng: const MapLatLng(
-                56.4006,
-                38.7103,
+        SizedBox(
+          height: sizedBoxHeight,
+          child: SfMaps(
+            layers: [
+              MapTileLayer(
+                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                initialFocalLatLng: const MapLatLng(
+                  56.4006,
+                  38.7103,
+                ),
+                zoomPanBehavior: MapZoomPanBehavior(
+                  maxZoomLevel: 20,
+                  zoomLevel: 15.5,
+                  // enableMouseWheelZooming: true,
+                  enableDoubleTapZooming: true,
+                ),
+                initialMarkersCount: 2,
+                markerBuilder: (BuildContext context, int index) {
+                  return MapMarker(
+                    latitude: dataOfLocations[index].latitude,
+                    longitude: dataOfLocations[index].longitude,
+                    child: const Icon(
+                      Icons.location_pin,
+                      size: 48.0,
+                      color: Colors.red,
+                    ),
+                  );
+                },
               ),
-              zoomPanBehavior: MapZoomPanBehavior(
-                maxZoomLevel: 20,
-                // enableMouseWheelZooming: true,
-                enableDoubleTapZooming: true,
-              ),
-              initialZoomLevel: 15,
-              initialMarkersCount: 2,
-              markerBuilder: (BuildContext context, int index) {
-                return MapMarker(
-                  latitude: dataOfLocations[index].latitude,
-                  longitude: dataOfLocations[index].longitude,
-                  child: const Icon(
-                    Icons.location_pin,
-                    color: Colors.red,
-                  ),
-                );
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );

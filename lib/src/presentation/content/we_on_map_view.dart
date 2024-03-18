@@ -1,3 +1,6 @@
+import 'dart:js';
+
+import 'package:auto_leader_project/src/data/location_data.dart';
 import 'package:auto_leader_project/src/presentation/style/color_style.dart';
 import 'package:auto_leader_project/src/presentation/style/text_style.dart';
 import 'package:flutter/cupertino.dart';
@@ -60,13 +63,31 @@ class WeOnMapView extends StatelessWidget {
             ),
           ],
         ),
-        const SfMaps(
+        SfMaps(
           layers: [
-            MapShapeLayer(
-              source: MapShapeSource.asset(
-                'json/map.json',
-                shapeDataField: 'name',
+            MapTileLayer(
+              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+              initialFocalLatLng: const MapLatLng(
+                56.4006,
+                38.7103,
               ),
+              zoomPanBehavior: MapZoomPanBehavior(
+                maxZoomLevel: 20,
+                // enableMouseWheelZooming: true,
+                enableDoubleTapZooming: true,
+              ),
+              initialZoomLevel: 15,
+              initialMarkersCount: 2,
+              markerBuilder: (BuildContext context, int index) {
+                return MapMarker(
+                  latitude: dataOfLocations[index].latitude,
+                  longitude: dataOfLocations[index].longitude,
+                  child: const Icon(
+                    Icons.location_pin,
+                    color: Colors.red,
+                  ),
+                );
+              },
             ),
           ],
         ),

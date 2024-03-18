@@ -28,7 +28,7 @@ class ScheduleView extends StatelessWidget {
               time: 'Пн, Ср │ 12:00 - 14:00',
               date: '25 Апреля',
             ),
-            SizedBox(width: 32.0),
+            // SizedBox(width: 32.0),
             _ScheduleCard(
               group: 'Вечерняя',
               time: 'Вт, Чт │ 18:00 - 20:00',

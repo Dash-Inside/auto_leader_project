@@ -1,11 +1,7 @@
-import 'dart:js';
-
 import 'package:auto_leader_project/src/data/location_data.dart';
 import 'package:auto_leader_project/src/presentation/style/color_style.dart';
 import 'package:auto_leader_project/src/presentation/style/text_style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
 
 /// Section for displaying map and address.

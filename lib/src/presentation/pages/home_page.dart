@@ -12,6 +12,48 @@ class HomePage extends StatelessWidget {
   /// Returns an instance of [HomePage].
   const HomePage({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: 1600.0,
+            ),
+            child: Stack(
+              children: [
+                ScrollConfiguration(
+                  behavior: const ScrollBehavior().copyWith(
+                    scrollbars: false,
+                  ),
+                  child: CustomScrollView(
+                    slivers: [
+                      const _AppSliverBar(),
+                      _SectionSliver(const AboutUsView()),
+                      _SectionSliver(const PromotionsView()),
+                      _SectionSliver(const InfoView()),
+                      _SectionSliver(const WeOnMapView()),
+                    ],
+                  ),
+                ),
+                const Positioned(
+                  right: 16.0,
+                  bottom: 16.0,
+                  child: FabWidget(),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _AppSliverBar extends StatelessWidget {
+  const _AppSliverBar();
+
   static const double _appBarHorizontalPadding = 48.0;
   static const double _expandedAppBarHeight = 88.0;
   static const double _appBarTopPadding = 8.0;
@@ -19,48 +61,27 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            CustomScrollView(
-              slivers: [
-                SliverAppBar(
-                  backgroundColor: getBackgroundColor(context),
-                  foregroundColor: getBackgroundColor(context),
-                  surfaceTintColor: getBackgroundColor(context),
-                  shadowColor: getOnBackgroundColor(context).withAlpha(
-                    _appBarShadowAlphaVal,
-                  ),
-                  pinned: true,
-                  floating: true,
-                  expandedHeight: _expandedAppBarHeight,
-                  flexibleSpace: const FlexibleSpaceBar(
-                    titlePadding: EdgeInsets.only(
-                      top: _appBarTopPadding,
-                    ),
-                    title: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: _appBarHorizontalPadding,
-                      ),
-                      child: NavigationBarView(),
-                    ),
-                    expandedTitleScale: 1.0,
-                  ),
-                ),
-                _SectionSliver(const AboutUsView()),
-                _SectionSliver(const PromotionsView()),
-                _SectionSliver(const InfoView()),
-                _SectionSliver(const WeOnMapView()),
-              ],
-            ),
-            const Positioned(
-              right: 16.0,
-              bottom: 16.0,
-              child: FabWidget(),
-            ),
-          ],
+    return SliverAppBar(
+      backgroundColor: getBackgroundColor(context),
+      foregroundColor: getBackgroundColor(context),
+      surfaceTintColor: getBackgroundColor(context),
+      shadowColor: getOnBackgroundColor(context).withAlpha(
+        _appBarShadowAlphaVal,
+      ),
+      pinned: true,
+      floating: true,
+      expandedHeight: _expandedAppBarHeight,
+      flexibleSpace: const FlexibleSpaceBar(
+        titlePadding: EdgeInsets.only(
+          top: _appBarTopPadding,
         ),
+        title: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: _appBarHorizontalPadding,
+          ),
+          child: NavigationBarView(),
+        ),
+        expandedTitleScale: 1.0,
       ),
     );
   }

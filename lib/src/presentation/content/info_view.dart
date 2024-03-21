@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 /// Section for displaying schedule.
-class ScheduleView extends StatelessWidget {
-  /// Returns an instance of [ScheduleView]
-  const ScheduleView({super.key});
+class InfoView extends StatelessWidget {
+  /// Returns an instance of [InfoView]
+  const InfoView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,8 +58,8 @@ class _ScheduleCard extends StatelessWidget {
       alignment: Alignment.topLeft,
       children: [
         Container(
-          height: 300,
-          width: 550,
+          height: 250,
+          width: 500,
           // height: MediaQuery.of(context).size.height / 2.5,
           // width: MediaQuery.of(context).size.width / 2.29,
           decoration: BoxDecoration(
@@ -79,7 +79,7 @@ class _ScheduleCard extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 24.0),
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Text(
                   '$group группа',
                   style: getSubtitleTextStyle(context),
@@ -96,7 +96,7 @@ class _ScheduleCard extends StatelessWidget {
               const Spacer(),
               // ignore: prefer_const_constructors
               Padding(
-                padding: const EdgeInsets.only(bottom: 24.0, top: 24.0),
+                padding: const EdgeInsets.only(bottom: 16.0, top: 16.0),
                 child: const ButtonWidget(
                   text: 'Записаться',
                   isInCard: true,
@@ -110,7 +110,7 @@ class _ScheduleCard extends StatelessWidget {
             color: getPrimaryColor(context),
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(64.0),
-              bottomRight: Radius.circular(200.0),
+              bottomRight: Radius.circular(160.0),
             ),
           ),
           child: const SizedBox(

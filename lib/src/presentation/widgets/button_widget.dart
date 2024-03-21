@@ -31,7 +31,7 @@ class ButtonWidget extends StatelessWidget {
     );
 
     const EdgeInsets bigPadding = EdgeInsets.symmetric(
-      horizontal: 80.0,
+      horizontal: 64.0,
       vertical: 10.0,
     );
 
@@ -40,7 +40,7 @@ class ButtonWidget extends StatelessWidget {
       color: getBackgroundColor(context),
     );
 
-    final TextStyle subtitleTextStyle = getSubtitleTextStyle(
+    final TextStyle subtitleTextStyle = getRegularTextStyle(
       context,
       color: getBackgroundColor(context),
     );

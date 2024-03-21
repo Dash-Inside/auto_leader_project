@@ -1,3 +1,5 @@
+import 'package:auto_leader_project/src/presentation/style/color_style.dart';
+import 'package:auto_leader_project/src/presentation/style/text_style.dart';
 import 'package:flutter/material.dart';
 
 /// Section for displaying all possible promotions.
@@ -67,9 +69,21 @@ class _PromotionRow extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(data.title),
+            Text(
+              data.title,
+              style: getSubtitleTextStyle(
+                context,
+                color: getPrimaryColor(context),
+              ),
+            ),
             const SizedBox(height: 16.0),
-            Text(data.description),
+            Text(
+              data.description,
+              style: getRegularTextStyle(
+                context,
+                color: getOnBackgroundColor(context),
+              ),
+            ),
           ],
         ),
       );

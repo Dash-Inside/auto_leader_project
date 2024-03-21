@@ -14,14 +14,14 @@ class ScreenType with _$ScreenType {
 
 class ScreenLayout extends StatelessWidget {
   const ScreenLayout({
-    required this.mobile,
-    required this.laptop,
     required this.desktop,
+    this.mobile,
+    this.laptop,
     super.key,
   });
 
-  final Widget Function(BuildContext context) mobile;
-  final Widget Function(BuildContext context) laptop;
+  final Widget Function(BuildContext context)? mobile;
+  final Widget Function(BuildContext context)? laptop;
   final Widget Function(BuildContext context) desktop;
 
   @override
@@ -29,18 +29,82 @@ class ScreenLayout extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     late final ScreenType type;
 
-    if (size.width < 600) {
+    if (size.width < 600 && mobile != null) {
       type = const ScreenType.mobile();
-    } else if (size.width < 1200) {
+    } else if (size.width < 1200 && laptop == null) {
+      type = const ScreenType.mobile();
+    } else if (size.width < 1200 && laptop != null) {
       type = const ScreenType.laptop();
     } else {
       type = const ScreenType.desktop();
     }
 
     return type.map(
-      mobile: (_) => mobile.call(context),
-      laptop: (_) => laptop.call(context),
+      mobile: (_) => mobile?.call(context) ?? const Placeholder(),
+      laptop: (_) => laptop?.call(context) ?? const Placeholder(),
       desktop: (_) => desktop.call(context),
     );
+  }
+}
+
+class SelectedScreenLayout extends StatelessWidget {
+  const SelectedScreenLayout({
+    required this.type,
+    required this.builder,
+    super.key,
+  });
+
+  final ScreenType type;
+  final Widget Function(BuildContext context) builder;
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    late final ScreenType local;
+
+    if (size.width < 600) {
+      local = const ScreenType.mobile();
+    } else if (size.width < 1200) {
+      local = const ScreenType.laptop();
+    } else {
+      local = const ScreenType.desktop();
+    }
+
+    if (type == local) {
+      return builder.call(context);
+    }
+
+    return const SizedBox.shrink();
+  }
+}
+
+class MultiSelectedScreenLayout extends StatelessWidget {
+  const MultiSelectedScreenLayout({
+    required this.type,
+    required this.builder,
+    super.key,
+  });
+
+  final List<ScreenType> type;
+  final Widget Function(BuildContext context) builder;
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    late final ScreenType local;
+
+    if (size.width < 600) {
+      local = const ScreenType.mobile();
+    } else if (size.width < 1200) {
+      local = const ScreenType.laptop();
+    } else {
+      local = const ScreenType.desktop();
+    }
+
+    if (type.contains(local)) {
+      return builder.call(context);
+    }
+
+    return const SizedBox.shrink();
   }
 }

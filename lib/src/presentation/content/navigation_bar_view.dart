@@ -1,3 +1,4 @@
+import 'package:auto_leader_project/core/screen_layout.dart';
 import 'package:auto_leader_project/src/presentation/style/color_style.dart';
 import 'package:auto_leader_project/src/presentation/style/text_style.dart';
 import 'package:auto_leader_project/src/presentation/widgets/button_widget.dart';
@@ -12,42 +13,59 @@ class NavigationBarView extends StatelessWidget {
   static const double expandedAppBarHeight = 88.0;
 
   // static const double _svgSize = 48.0;
-  static const List<String> _viewSections = ['О Нас', 'Стоимость', 'Акции', 'Расписание', 'Мы на карте'];
+  static const List<String> _viewSections = [
+    'О Нас',
+    'Стоимость',
+    'Акции',
+    'Расписание',
+    'Мы на карте',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // SvgPicture.asset(
-        //   'assets/icons/logo.svg',
-        //   height: _svgSize,
-        //   width: _svgSize,
-        // ),
-        // const SizedBox(
-        //   width: 32.0,
-        // ),
         Text(
           'АвтоЛидер',
           style: getTitleTextStyle(context),
         ),
         const Spacer(),
-        Wrap(
-          spacing: 32.0,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          children: _viewSections.map(
-            (_) {
-              return _HeaderButton(
-                text: _,
-                highlighted: _viewSections.first == _,
-                onPressed: () {
-                  debugPrint('$_ Pressed');
-                },
-              );
-            },
-          ).toList(),
+        ScreenLayout(
+          mobile: (context) {
+            return const Icon(Icons.menu_rounded);
+          },
+          laptop: (context) {
+            return const Row(
+              children: [
+                ButtonWidget(text: 'Записаться'),
+                SizedBox(width: 16.0),
+                Icon(Icons.menu_rounded),
+              ],
+            );
+          },
+          desktop: (context) {
+            return Row(
+              children: [
+                ..._viewSections.map(
+                  (title) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: _HeaderButton(
+                        text: title,
+                        highlighted: _viewSections.first == title,
+                        onPressed: () {
+                          debugPrint('$title Pressed');
+                        },
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(width: 16.0),
+                const ButtonWidget(text: 'Записаться'),
+              ],
+            );
+          },
         ),
-        const SizedBox(width: 32.0),
-        const ButtonWidget(text: 'Записаться'),
       ],
     );
   }
